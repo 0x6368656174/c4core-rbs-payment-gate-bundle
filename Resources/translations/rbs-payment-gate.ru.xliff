@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label.register_order_request">
+                <source>label.register_order_request</source>
+                <target>Запрос регистрации</target>
+            </trans-unit>
+            <trans-unit id="label.merchant_order_number">
+                <source>label.merchant_order_number</source>
+                <target>Номер заказа</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="label.amount_kopeck">
+                <source>label.amount_kopeck</source>
+                <target>Сумма (копейки)</target>
+            </trans-unit>
+            <trans-unit id="label.currency_code">
+                <source>label.currency_code</source>
+                <target>Код валюты</target>
+            </trans-unit>
+            <trans-unit id="label.language">
+                <source>label.language</source>
+                <target>Язык</target>
+            </trans-unit>
+            <trans-unit id="label.page_view">
+                <source>label.page_view</source>
+                <target>Вид страницы</target>
+            </trans-unit>
+            <trans-unit id="label.session_timeout_secs">
+                <source>label.session_timeout_secs</source>
+                <target>Время жизни сессии (сек)</target>
+            </trans-unit>
+            <trans-unit id="label.binding_id">
+                <source>label.binding_id</source>
+                <target>Идентификатор связки</target>
+            </trans-unit>
+            <trans-unit id="label.expiration_date">
+                <source>label.expiration_date</source>
+                <target>Время жизни заказа</target>
+            </trans-unit>
+            <trans-unit id="label.return_url">
+                <source>label.return_url</source>
+                <target>Адрес возврата успешной оплаты</target>
+            </trans-unit>
+            <trans-unit id="label.fail_url">
+                <source>label.fail_url</source>
+                <target>Адрес возврата неудачной оплаты</target>
+            </trans-unit>
+            <trans-unit id="label.params">
+                <source>label.params</source>
+                <target>Дополнительные параметры</target>
+            </trans-unit>
+            <trans-unit id="label.client_id">
+                <source>label.client_id</source>
+                <target>Номер клиента в магазине</target>
+            </trans-unit>
+            <trans-unit id="label.merchant_login">
+                <source>label.merchant_login</source>
+                <target>Логин дочернего мерчанта</target>
+            </trans-unit>
+            <trans-unit id="label.register_order_response">
+                <source>label.register_order_response</source>
+                <target>Ответ на запрос регистрации</target>
+            </trans-unit>
+            <trans-unit id="label.order_id">
+                <source>label.order_id</source>
+                <target>Номер заказа в банке</target>
+            </trans-unit>
+            <trans-unit id="label.form_url">
+                <source>label.form_url</source>
+                <target>Адрес страницы оплаты</target>
+            </trans-unit>
+            <trans-unit id="label.error_code">
+                <source>label.error_code</source>
+                <target>Код ошибки</target>
+            </trans-unit>
+            <trans-unit id="label.error_message">
+                <source>label.error_message</source>
+                <target>Текст ошибки</target>
+            </trans-unit>
+            <trans-unit id="label.get_order_status_request">
+                <source>label.get_order_status_request</source>
+                <target>Запрос статуса заказа</target>
+            </trans-unit>
+            <trans-unit id="label.get_order_status_response">
+                <source>label.get_order_status_response</source>
+                <target>Ответ на запрос статуса заказа</target>
+            </trans-unit>
+            <trans-unit id="label.order_status">
+                <source>label.order_status</source>
+                <target>Статус заказа</target>
+            </trans-unit>
+            <trans-unit id="label.pan">
+                <source>label.pan</source>
+                <target>Номер карты</target>
+            </trans-unit>
+            <trans-unit id="label.cardholder_name">
+                <source>label.cardholder_name</source>
+                <target>Имя держателя карты</target>
+            </trans-unit>
+            <trans-unit id="label.approval_code">
+                <source>label.approval_code</source>
+                <target>Кот авторизации МПС</target>
+            </trans-unit>
+            <trans-unit id="label.auth_code">
+                <source>label.auth_code</source>
+                <target>Устаревший код авторизации</target>
+            </trans-unit>
+            <trans-unit id="label.ip">
+                <source>label.ip</source>
+                <target>IP адрес плательщика</target>
+            </trans-unit>
+            <trans-unit id="label.date">
+                <source>label.date</source>
+                <target>Дата регистрации заказа</target>
+            </trans-unit>
+            <trans-unit id="label.action_code_description">
+                <source>label.action_code_description</source>
+                <target>Описание кода ответа</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

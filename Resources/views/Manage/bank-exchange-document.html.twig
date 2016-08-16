@@ -1,0 +1,146 @@
+{% trans_default_domain "rbs-payment-gate" %}
+
+{% if bankDocument is RbsPaymentGateBundle_RegisterOrderRequest %}
+    <div class="row">
+        <div class="col-sm-2">
+            <h3><i class="fa fa-upload"></i> {{ 'label.register_order_request'|trans }}</h3>
+        </div>
+        <div class="col-sm-10">
+            <dl class="dl-horizontal">
+                <dt>{{ 'label.merchant_order_number'|trans }}:</dt> <dd>{{ bankDocument.merchantOrderNumber }}</dd>
+                {% if bankDocument.description is not null %}
+                    <dt>{{ 'label.description'|trans }}:</dt> <dd>{{ bankDocument.description }}</dd>
+                {% endif %}
+                {% if bankDocument.amount is not null %}
+                    <dt>{{ 'label.amount_kopeck'|trans }}:</dt> <dd>{{ bankDocument.amount }}</dd>
+                {% endif %}
+                {% if bankDocument.currency is not null %}
+                    <dt>{{ 'label.currency_code'|trans }}:</dt> <dd>{{ bankDocument.currency }}</dd>
+                {% endif %}
+                {% if bankDocument.language is not null %}
+                    <dt>{{ 'label.language'|trans }}:</dt> <dd>{{ bankDocument.language }}</dd>
+                {% endif %}
+                {% if bankDocument.pageView is not null %}
+                    <dt>{{ 'label.page_view'|trans }}:</dt> <dd>{{ bankDocument.pageView }}</dd>
+                {% endif %}
+                {% if bankDocument.sessionTimeoutSecs is not null %}
+                    <dt>{{ 'label.session_timeout_secs'|trans }}:</dt> <dd>{{ bankDocument.sessionTimeoutSecs }}</dd>
+                {% endif %}
+                {% if bankDocument.bindingId is not null %}
+                    <dt>{{ 'label.binding_id'|trans }}:</dt> <dd>{{ bankDocument.bindingId }}</dd>
+                {% endif %}
+                {% if bankDocument.expirationDate is not null %}
+                    <dt>{{ 'label.expiration_date'|trans }}:</dt> <dd>{{ bankDocument.expirationDate }}</dd>
+                {% endif %}
+                {% if bankDocument.returnUrl is not null %}
+                    <dt>{{ 'label.return_url'|trans }}:</dt> <dd>{{ bankDocument.returnUrl }}</dd>
+                {% endif %}
+                {% if bankDocument.failUrl is not null %}
+                    <dt>{{ 'label.fail_url'|trans }}:</dt> <dd>{{ bankDocument.failUrl }}</dd>
+                {% endif %}
+                {% if bankDocument.params is not null %}
+                    <dt>{{ 'label.params'|trans }}:</dt> <dd>{{ bankDocument.params }}</dd>
+                {% endif %}
+                {% if bankDocument.clientId is not null %}
+                    <dt>{{ 'label.client_id'|trans }}:</dt> <dd>{{ bankDocument.clientId }}</dd>
+                {% endif %}
+                {% if bankDocument.merchantLogin is not null %}
+                    <dt>{{ 'label.merchant_login'|trans }}:</dt> <dd>{{ bankDocument.merchantLogin }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+    </div>
+{% elseif bankDocument is RbsPaymentGateBundle_RegisterOrderResponse %}
+    <div class="row">
+        <div class="col-sm-2">
+            <h3><i class="fa fa-download"></i> {{ 'label.register_order_response'|trans }}</h3>
+        </div>
+        <div class="col-sm-10">
+            <dl class="dl-horizontal">
+                {% if bankDocument.orderId is not null %}
+                    <dt>{{ 'label.order_id'|trans }}:</dt> <dd>{{ bankDocument.orderId }}</dd>
+                {% endif %}
+                {% if bankDocument.formUrl is not null %}
+                    <dt>{{ 'label.form_url'|trans }}:</dt> <dd>{{ bankDocument.formUrl }}</dd>
+                {% endif %}
+                {% if bankDocument.errorCode is not null %}
+                    <dt>{{ 'label.error_code'|trans }}:</dt> <dd>{{ bankDocument.errorCode }}</dd>
+                {% endif %}
+                {% if bankDocument.errorMessage is not null %}
+                    <dt>{{ 'label.error_message'|trans }}:</dt> <dd>{{ bankDocument.errorMessage }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+    </div>
+{% elseif bankDocument is RbsPaymentGateBundle_GetOrderStatusRequest %}
+    <div class="row">
+        <div class="col-sm-2">
+            <h3><i class="fa fa-upload"></i> {{ 'label.get_order_status_request'|trans }}</h3>
+        </div>
+        <div class="col-sm-10">
+            <dl class="dl-horizontal">
+                {% if bankDocument.orderId is not null %}
+                    <dt>{{ 'label.order_id'|trans }}:</dt> <dd>{{ bankDocument.orderId }}</dd>
+                {% endif %}
+                {% if bankDocument.language is not null %}
+                    <dt>{{ 'label.language'|trans }}:</dt> <dd>{{ bankDocument.language }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+    </div>
+{% elseif bankDocument is RbsPaymentGateBundle_GetOrderStatusResponse %}
+    <div class="row">
+        <div class="col-sm-2">
+            <h3><i class="fa fa-download"></i> {{ 'label.get_order_status_response'|trans }}</h3>
+        </div>
+        <div class="col-sm-10">
+            <dl class="dl-horizontal">
+                {% if bankDocument.orderStatus is not null %}
+                    <dt>{{ 'label.order_status'|trans }}:</dt> <dd>{{ bankDocument.orderStatus }}</dd>
+                {% endif %}
+                {% if bankDocument.errorCode is not null %}
+                    <dt>{{ 'label.error_code'|trans }}:</dt> <dd>{{ bankDocument.errorCode }}</dd>
+                {% endif %}
+                {% if bankDocument.errorMessage is not null %}
+                    <dt>{{ 'label.error_message'|trans }}:</dt> <dd>{{ bankDocument.errorMessage }}</dd>
+                {% endif %}
+                {% if bankDocument.orderNumber is not null %}
+                    <dt>{{ 'label.merchant_order_number'|trans }}:</dt> <dd>{{ bankDocument.orderNumber }}</dd>
+                {% endif %}
+                {% if bankDocument.pan is not null %}
+                    <dt>{{ 'label.pan'|trans }}:</dt> <dd>{{ bankDocument.pan }}</dd>
+                {% endif %}
+                {% if bankDocument.expiration is not null %}
+                    <dt>{{ 'label.expiration_date'|trans }}:</dt> <dd>{{ bankDocument.expiration }}</dd>
+                {% endif %}
+                {% if bankDocument.cardholderName is not null %}
+                    <dt>{{ 'label.cardholder_name'|trans }}:</dt> <dd>{{ bankDocument.cardholderName }}</dd>
+                {% endif %}
+                {% if bankDocument.amount is not null %}
+                    <dt>{{ 'label.amount_kopeck'|trans }}:</dt> <dd>{{ bankDocument.amount }}</dd>
+                {% endif %}
+                {% if bankDocument.currency is not null %}
+                    <dt>{{ 'label.currency_code'|trans }}:</dt> <dd>{{ bankDocument.currency }}</dd>
+                {% endif %}
+                {% if bankDocument.approvalCode is not null %}
+                    <dt>{{ 'label.approval_code'|trans }}:</dt> <dd>{{ bankDocument.approvalCode }}</dd>
+                {% endif %}
+                {% if bankDocument.authCode is not null %}
+                    <dt>{{ 'label.auth_code'|trans }}:</dt> <dd>{{ bankDocument.authCode }}</dd>
+                {% endif %}
+                {% if bankDocument.ip is not null %}
+                    <dt>{{ 'label.ip'|trans }}:</dt> <dd>{{ bankDocument.ip }}</dd>
+                {% endif %}
+                {% if bankDocument.date is not null %}
+                    <dt>{{ 'label.date'|trans }}:</dt> <dd>{{ bankDocument.date }}</dd>
+                {% endif %}
+                {% if bankDocument.orderDescription is not null %}
+                    <dt>{{ 'label.description'|trans }}:</dt> <dd>{{ bankDocument.orderDescription }}</dd>
+                {% endif %}
+                {% if bankDocument.actionCodeDescription is not null %}
+                    <dt>{{ 'label.action_code_description'|trans }}:</dt> <dd>{{ bankDocument.actionCodeDescription }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,45 @@
+services:
+  iq_rbs_payment_gate.gate:
+    class: ItQuasar\RbsPaymentGateBundle\Services\GateService
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@translator.default'
+      - '@router'
+      - '@iq_rbs_payment_gate.notification'
+    calls:
+      - [setEnvironment, ['%kernel.environment%']]
+      - [setPaySessionTimeoutSecs, ['%iq_rbs_payment_gate.pay_session_timeout_secs%']]
+
+      - [setPayReturnRoute, ['%iq_rbs_payment_gate.pay_return_route%']]
+      - [setPayFailRoute, ['%iq_rbs_payment_gate.pay_fail_route%']]
+      - [setGateUrl, ['%iq_rbs_payment_gate.gate_url%']]
+      - [setUserName, ['%iq_rbs_payment_gate.user_name%']]
+      - [setPassword, ['%iq_rbs_payment_gate.password%']]
+
+      - [setPayReturnRouteDev, ['%iq_rbs_payment_gate.pay_return_route_dev%']]
+      - [setPayFailRouteDev, ['%iq_rbs_payment_gate.pay_fail_route_dev%']]
+      - [setGateUrlDev, ['%iq_rbs_payment_gate.gate_url_dev%']]
+      - [setUserNameDev, ['%iq_rbs_payment_gate.user_name_dev%']]
+      - [setPasswordDev, ['%iq_rbs_payment_gate.password_dev%']]
+
+
+  iq_rbs_payment_gate.notification:
+    class: ItQuasar\RbsPaymentGateBundle\Services\NotificationService
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@translator.default'
+    calls:
+      - [setEnvironment, ['%kernel.environment%']]
+
+      - [setGateUrl, ['%iq_rbs_payment_gate.gate_url%']]
+      - [setUserName, ['%iq_rbs_payment_gate.user_name%']]
+      - [setPassword, ['%iq_rbs_payment_gate.password%']]
+
+      - [setGateUrlDev, ['%iq_rbs_payment_gate.gate_url_dev%']]
+      - [setUserNameDev, ['%iq_rbs_payment_gate.user_name_dev%']]
+      - [setPasswordDev, ['%iq_rbs_payment_gate.password_dev%']]
+
+  iq_rbs_payment_gate.twig_instance_of_extension:
+    class: ItQuasar\RbsPaymentGateBundle\Twig\TwigInstanceOf
+    tags:
+      - { name: twig.extension }

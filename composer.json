@@ -1,0 +1,19 @@
+{
+    "name": "itquasar/c4core-rbs-payment-gate-bundle",
+    "license": "proprietary",
+    "type": "library",
+    "description": "Шлюз оплаты системы РБС для C4Core",
+    "homepage": "https://itquasar.ru",
+    "authors": [
+        {
+            "name": "Pavel Puchkov",
+            "email": "0x6368656174@gmail.com"
+        }
+    ],
+    "require": {
+        "itquasar/c4core-bundle": "*"
+    },
+    "autoload": {
+        "psr-4": { "ItQuasar\\C4CoreRbsPaymentGateBundle\\": "" }
+    }
+}
