@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Services;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Services;
 
 trait WsService
 {

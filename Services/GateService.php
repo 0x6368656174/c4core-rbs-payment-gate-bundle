@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Services;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use ItQuasar\C4CoreBundle\AbstractService\Gate;
@@ -22,9 +22,9 @@ use ItQuasar\C4CoreBundle\Exception\GateException;
 use ItQuasar\C4CoreBundle\Exception\NotFoundBankPayResponseException;
 use ItQuasar\C4CoreBundle\Exception\NotFoundBankPayRequestException;
 use ItQuasar\C4CoreBundle\Exception\PayInProcessException;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsRegisterOrderRequest;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsRegisterOrderResponse;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsRegisterOrderRequest;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsRegisterOrderResponse;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Translator;
@@ -64,7 +64,7 @@ class GateService extends Gate
 
         $query = $this->em->createQueryBuilder()
             ->select('r')
-            ->from('ItQuasarRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
+            ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
             ->andWhere('r.orderId = :orderId')
             ->andWhere('r.errorCode = 0')
             ->getQuery();
@@ -93,7 +93,7 @@ class GateService extends Gate
 
         $query = $this->em->createQueryBuilder()
             ->select('r')
-            ->from('ItQuasarRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
+            ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
             ->where('r.order = :order')
             ->getQuery();
         
@@ -133,7 +133,7 @@ class GateService extends Gate
 
         $query = $this->em->createQueryBuilder()
             ->select('r')
-            ->from('ItQuasarRbsPaymentGateBundle:RbsGetOrderStatusResponse', 'r')
+            ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsGetOrderStatusResponse', 'r')
             ->andWhere('r.orderNumber = :orderNumber')
             ->getQuery();
 
@@ -145,7 +145,7 @@ class GateService extends Gate
 
         $query = $this->em->createQueryBuilder()
             ->select('r')
-            ->from('ItQuasarRbsPaymentGateBundle:RbsRegisterOrderRequest', 'r')
+            ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsRegisterOrderRequest', 'r')
             ->where('r.merchantOrderNumber = :orderNumber')
             ->getQuery();
 
@@ -192,7 +192,7 @@ class GateService extends Gate
     {
         $query = $this->em->createQueryBuilder()
             ->select('r')
-            ->from('ItQuasarRbsPaymentGateBundle:RbsRegisterOrderRequest', 'r')
+            ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsRegisterOrderRequest', 'r')
             ->where('r.order = :order')
             ->getQuery();
 

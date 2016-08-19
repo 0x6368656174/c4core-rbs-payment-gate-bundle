@@ -1,6 +1,6 @@
 <?php
 
-namespace ItQuasar\RbsPaymentGateBundle\DependencyInjection;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -24,6 +24,6 @@ class ItQuasarRbsPaymentGateExtension extends Extension
     
     public function getAlias()
     {
-        return 'iq_rbs_payment_gate';
+        return 'iq_c4_core_rbs_payment_gate';
     }
 }

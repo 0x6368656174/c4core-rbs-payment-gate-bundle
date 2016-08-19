@@ -8,19 +8,19 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Twig;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Twig;
 
 
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsGetOrderStatusRequest;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsRegisterOrderRequest;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsRegisterOrderResponse;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsGetOrderStatusRequest;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsRegisterOrderRequest;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsRegisterOrderResponse;
 
 class TwigInstanceOf extends \Twig_Extension
 {
     public function getName()
     {
-        return 'rbs_payment_gate_instance_of';
+        return 'c4_core_rbs_payment_gate_instance_of';
     }
 
     public function getTests()

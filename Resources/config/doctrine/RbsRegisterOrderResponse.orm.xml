@@ -14,7 +14,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="ItQuasar\RbsPaymentGateBundle\Entity\RbsRegisterOrderResponse" table="rbs_register_order_responses">
+    <entity name="ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsRegisterOrderResponse" table="rbs_register_order_responses">
         <field name="orderId" type="string" nullable="true" />
         <field name="formUrl" type="string" nullable="true" />
         <field name="errorCode" type="integer" nullable="true" />

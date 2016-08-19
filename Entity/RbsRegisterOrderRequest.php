@@ -8,14 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Entity;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Entity;
 
 use ItQuasar\C4CoreBundle\Common\GetterSetter;
 use ItQuasar\C4CoreBundle\Entity\BankExchangeDocument;
 
 /**
  * Class RbsRegisterOrderRequest
- * @package ItQuasar\RbsPaymentGateBundle\Entity
+ * @package ItQuasar\C4CoreRbsPaymentGateBundle\Entity
  *
  * @method int getId()
  *

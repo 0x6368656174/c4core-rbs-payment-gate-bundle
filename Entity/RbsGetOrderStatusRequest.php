@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Entity;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Entity;
 
 
 use ItQuasar\C4CoreBundle\Common\GetterSetter;
@@ -16,7 +16,7 @@ use ItQuasar\C4CoreBundle\Entity\BankExchangeDocument;
 
 /**
  * Class RbsGetOrderStatusRequest
- * @package ItQuasar\RbsPaymentGateBundle\Entity
+ * @package ItQuasar\C4CoreRbsPaymentGateBundle\Entity
  * 
  * @method string getOrderId()
  * @method $this setOrderId(string $orderId)

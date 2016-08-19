@@ -14,7 +14,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="ItQuasar\RbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse" table="rbs_get_order_status_responses">
+    <entity name="ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse" table="rbs_get_order_status_responses">
         <field name="orderStatus" type="integer" nullable="true"/>
         <field name="errorCode" type="integer" nullable="true"/>
         <field name="errorMessage" type="string" nullable="true"/>

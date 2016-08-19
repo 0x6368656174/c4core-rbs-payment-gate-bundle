@@ -1,6 +1,6 @@
 <?php
 
-namespace ItQuasar\RbsPaymentGateBundle\DependencyInjection;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

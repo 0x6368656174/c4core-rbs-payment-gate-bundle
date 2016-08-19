@@ -1,11 +1,11 @@
 <?php
 
-namespace ItQuasar\RbsPaymentGateBundle;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle;
 
-use ItQuasar\RbsPaymentGateBundle\DependencyInjection\ItQuasarRbsPaymentGateExtension;
+use ItQuasar\C4CoreRbsPaymentGateBundle\DependencyInjection\ItQuasarRbsPaymentGateExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ItQuasarRbsPaymentGateBundle extends Bundle
+class ItQuasarC4CoreRbsPaymentGateBundle extends Bundle
 {
     public function getContainerExtension()
     {

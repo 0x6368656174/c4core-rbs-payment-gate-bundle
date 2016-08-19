@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Services;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Services;
 
 
 use Doctrine\ORM\EntityManager;
 use ItQuasar\C4CoreBundle\AbstractService\Notification;
 use ItQuasar\C4CoreBundle\Entity\Order;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsGetOrderStatusRequest;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse;
-use ItQuasar\RbsPaymentGateBundle\Entity\RbsRegisterOrderResponse;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsGetOrderStatusRequest;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsGetOrderStatusResponse;
+use ItQuasar\C4CoreRbsPaymentGateBundle\Entity\RbsRegisterOrderResponse;
 use Symfony\Component\Translation\Translator;
 
 class NotificationService extends Notification
@@ -38,7 +38,7 @@ class NotificationService extends Notification
     {
         $query = $this->em->createQueryBuilder()
             ->select('r')
-            ->from('ItQuasarRbsPaymentGateBundle:RbsGetOrderStatusRequest', 'r')
+            ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsGetOrderStatusRequest', 'r')
             ->where('r.order = :order')
             ->getQuery();
 
@@ -48,7 +48,7 @@ class NotificationService extends Notification
         if (!$getOrderStatusRequest) {
             $query = $this->em->createQueryBuilder()
                 ->select('r')
-                ->from('ItQuasarRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
+                ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
                 ->andWhere('r.order = :order')
                 ->andWhere('r.errorCode = 0')
                 ->getQuery();

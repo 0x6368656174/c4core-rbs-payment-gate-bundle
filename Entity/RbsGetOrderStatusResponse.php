@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ItQuasar\RbsPaymentGateBundle\Entity;
+namespace ItQuasar\C4CoreRbsPaymentGateBundle\Entity;
 
 
 use ItQuasar\C4CoreBundle\Common\Castable;
@@ -17,7 +17,7 @@ use ItQuasar\C4CoreBundle\Entity\BankExchangeDocument;
 
 /**
  * Class RbsGetOrderStatusResponse
- * @package ItQuasar\RbsPaymentGateBundle\Entity
+ * @package ItQuasar\C4CoreRbsPaymentGateBundle\Entity
  *
  * @method int getOrderStatus()
  * @method $this setOrderStatus(int $orderStatus)
