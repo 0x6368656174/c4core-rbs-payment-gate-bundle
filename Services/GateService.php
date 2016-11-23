@@ -87,33 +87,47 @@ class GateService extends Gate
         return $responses[0];
     }
 
-    public function createHttpPayRequest(BankExchangeDocument $bankRequest)
+    public function getHttpPayRequest(Order $order) : HttpPayRequest
     {
-        /** @var RbsRegisterOrderRequest $bankRequest */
-
         $query = $this->em->createQueryBuilder()
             ->select('r')
             ->from('ItQuasarC4CoreRbsPaymentGateBundle:RbsRegisterOrderResponse', 'r')
             ->where('r.order = :order')
             ->getQuery();
-        
-        $query->setParameter(':order', $bankRequest->getOrder());
+
+        $query->setParameter(':order', $order);
+
         /** @var RbsRegisterOrderResponse $oldRegisterOrderResponse */
         $oldRegisterOrderResponse = $query->getOneOrNullResult();
-        
-        $processRegisterOrderResponse = function (RbsRegisterOrderResponse $registerOrderResponse) {
-            if ($registerOrderResponse->getErrorCode() > 0)
-                throw new GateException($registerOrderResponse->getErrorMessage(), $registerOrderResponse->getErrorCode());
 
-            $httpRequest = new HttpPayRequest();
-            $httpRequest->setUrl($registerOrderResponse->getFormUrl());
+        if (!$oldRegisterOrderResponse)
+            throw new \Exception('Http pay request not found.');
 
-            return $httpRequest;
-        };
-        
-        if ($oldRegisterOrderResponse) 
-            return $processRegisterOrderResponse($oldRegisterOrderResponse);
-        
+        return $this->processRegisterOrderResponse($oldRegisterOrderResponse);
+    }
+
+    private function processRegisterOrderResponse(RbsRegisterOrderResponse $registerOrderResponse) : HttpPayRequest {
+        if ($registerOrderResponse->getErrorCode() > 0)
+            throw new GateException($registerOrderResponse->getErrorMessage(), $registerOrderResponse->getErrorCode());
+
+        $httpRequest = new HttpPayRequest();
+        $httpRequest->setUrl($registerOrderResponse->getFormUrl());
+
+        return $httpRequest;
+    }
+
+    public function createHttpPayRequest(BankExchangeDocument $bankRequest)
+    {
+        /** @var RbsRegisterOrderRequest $bankRequest */
+
+        try {
+            $oldHttpPayRequest = $this->getHttpPayRequest($bankRequest->getOrder());
+            if ($oldHttpPayRequest)
+                return $oldHttpPayRequest;
+        } catch (GateException $exception) {
+            throw $exception;
+        } catch (\Exception $exception) {}
+
         $soap = $this->createSoap();
 
        /** @noinspection PhpUndefinedMethodInspection */
@@ -124,7 +138,7 @@ class GateService extends Gate
         $this->em->persist($registerOrderResponse);
         $this->em->flush();
         
-        return $processRegisterOrderResponse($registerOrderResponse);
+        return $this->processRegisterOrderResponse($registerOrderResponse);
     }
     
     public function processPayResponse(BankExchangeDocument &$response)
@@ -188,7 +202,7 @@ class GateService extends Gate
         
     }
 
-    public function createPayRequest(Order $order, array $extraParameters = array())
+    public function getPayRequest(Order $order)
     {
         $query = $this->em->createQueryBuilder()
             ->select('r')
@@ -197,7 +211,12 @@ class GateService extends Gate
             ->getQuery();
 
         $query->setParameter(':order', $order);
-        $oldRegisterOrderRequest = $query->getOneOrNullResult();
+        return $query->getOneOrNullResult();
+    }
+
+    public function createPayRequest(Order $order, array $extraParameters = array())
+    {
+        $oldRegisterOrderRequest = $this->getPayRequest($order);
         
         if ($oldRegisterOrderRequest)
             return $oldRegisterOrderRequest;
@@ -209,24 +228,30 @@ class GateService extends Gate
         $registerOrderRequest->setDescription($order->getDescription());
         $registerOrderRequest->setAmount($order->getAmount() * 100);
         $registerOrderRequest->setSessionTimeoutSecs($this->paySessionTimeoutSecs);
-        
+
         if (key_exists('merchantLogin', $extraParameters))
             $registerOrderRequest->setMerchantLogin($extraParameters['merchantLogin']);
+        if (key_exists('pageView', $extraParameters))
+            $registerOrderRequest->setPageView($extraParameters['pageView']);
+
+        $routeParams = array(
+            'pageView' => $registerOrderRequest->getPageView()
+        );
 
         if ($this->environment != 'dev') {
-            $registerOrderRequest->setReturnUrl($this->router->generate($this->payReturnRoute, array(), Router::ABSOLUTE_URL));
+            $registerOrderRequest->setReturnUrl($this->router->generate($this->payReturnRoute, $routeParams, Router::ABSOLUTE_URL));
             if ($this->payFailRoute)
-                $registerOrderRequest->setFailUrl($this->router->generate($this->payFailRoute, array(), Router::ABSOLUTE_URL));
+                $registerOrderRequest->setFailUrl($this->router->generate($this->payFailRoute, $routeParams, Router::ABSOLUTE_URL));
         } else {
             if ($this->payReturnRouteDev)
-                $registerOrderRequest->setReturnUrl($this->router->generate($this->payReturnRouteDev, array(), Router::ABSOLUTE_URL));
+                $registerOrderRequest->setReturnUrl($this->router->generate($this->payReturnRouteDev, $routeParams, Router::ABSOLUTE_URL));
             else
-                $registerOrderRequest->setReturnUrl($this->router->generate($this->payReturnRoute, array(), Router::ABSOLUTE_URL));
+                $registerOrderRequest->setReturnUrl($this->router->generate($this->payReturnRoute, $routeParams, Router::ABSOLUTE_URL));
 
             if ($this->payFailRouteDev)
-                $registerOrderRequest->setReturnUrl($this->router->generate($this->payFailRouteDev, array(), Router::ABSOLUTE_URL));
+                $registerOrderRequest->setReturnUrl($this->router->generate($this->payFailRouteDev, $routeParams, Router::ABSOLUTE_URL));
             else if ($this->payFailRoute)
-                $registerOrderRequest->setReturnUrl($this->router->generate($this->payFailRoute, array(), Router::ABSOLUTE_URL));
+                $registerOrderRequest->setReturnUrl($this->router->generate($this->payFailRoute, $routeParams, Router::ABSOLUTE_URL));
         }
 
         $this->em->persist($registerOrderRequest);
