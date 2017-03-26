@@ -228,11 +228,12 @@ class GateService extends Gate
         $registerOrderRequest->setDescription($order->getDescription());
         $registerOrderRequest->setAmount($order->getAmount() * 100);
         $registerOrderRequest->setSessionTimeoutSecs($this->paySessionTimeoutSecs);
+        $registerOrderRequest->setClientId($order->getCustomer()->getId());
 
         if (key_exists('merchantLogin', $extraParameters))
             $registerOrderRequest->setMerchantLogin($extraParameters['merchantLogin']);
-        //if (key_exists('pageView', $extraParameters))
-        //    $registerOrderRequest->setPageView($extraParameters['pageView']);
+//        if (key_exists('pageView', $extraParameters))
+//            $registerOrderRequest->setPageView($extraParameters['pageView']);
 
         $routeParams = array(
             'pageView' => $registerOrderRequest->getPageView()
