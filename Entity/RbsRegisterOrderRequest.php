@@ -99,4 +99,5 @@ class RbsRegisterOrderRequest extends BankExchangeDocument
     private $email;
     private $orderBundle;
     private $features;
+    private $taxSystem;
 }
