@@ -100,4 +100,5 @@ class RbsRegisterOrderRequest extends BankExchangeDocument
     private $orderBundle;
     private $features;
     private $taxSystem;
+    private $autocompletionDate;
 }
