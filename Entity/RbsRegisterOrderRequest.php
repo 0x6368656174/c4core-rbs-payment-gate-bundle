@@ -101,4 +101,5 @@ class RbsRegisterOrderRequest extends BankExchangeDocument
     private $features;
     private $taxSystem;
     private $autocompletionDate;
+    private $postAddress;
 }
